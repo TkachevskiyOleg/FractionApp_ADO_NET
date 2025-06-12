@@ -78,5 +78,17 @@ namespace _24._04._2024_Lab.Models
         {
             return $"{Numerator}/{Denominator}";
         }
+
+        // Додатковий метод для парсингу дробу з рядка виду "чисельник/знаменник"
+        public static Fraction Parse(string s)
+        {
+            var parts = s.Split('/');
+            if (parts.Length != 2)
+                throw new FormatException("Invalid fraction format");
+
+            int numerator = int.Parse(parts[0].Trim());
+            int denominator = int.Parse(parts[1].Trim());
+            return new Fraction(numerator, denominator);
+        }
     }
 }

@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Fractions from File";
+    var fractions = ViewBag.Fractions as List<_24._04._2024_Lab.Models.Fraction>;
+    var sum = ViewBag.Sum as _24._04._2024_Lab.Models.Fraction;
+    var sumDecimal = ViewBag.SumDecimal as string;
+}
+
+<h2>Fractions loaded from file:</h2>
+
+@if (fractions != null)
+{
+    <ul>
+        @foreach (var f in fractions)
+        {
+            <li>@f.ToString() (Decimal: @f.ToDecimal())</li>
+        }
+    </ul>
+
+    <h3>Sum of fractions: @sum.ToString() (Decimal: @sumDecimal)</h3>
+}
+
+<p>
+    <a asp-controller="Fraction" asp-action="Upload">Завантажити інший файл</a> |
+    <a asp-controller="Fraction" asp-action="Index">Повернутись до калькулятора дробів</a>
+</p>

@@ -1,0 +1,42 @@
+﻿@model List<_24._04._2024_Lab.Models.Car>
+
+@{
+    ViewData["Title"] = "Cars List";
+}
+
+<h2>Cars List</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No cars loaded.</p>
+}
+else
+{
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Manufacturer</th>
+                <th>Year</th>
+                <th>Engine Volume (L)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in Model)
+            {
+                <tr>
+                    <td>@car.Name</td>
+                    <td>@car.Color</td>
+                    <td>@car.Manufacturer</td>
+                    <td>@car.Year</td>
+                    <td>@car.EngineVolume</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<p>
+    <a asp-controller="Car" asp-action="Upload">Upload another file</a>
+</p>

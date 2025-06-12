@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Масив дробів";
+}
+<h2>Масив дробів</h2>
+<form method="post">
+    @for (int i = 0; i < 5; i++)
+    {
+        <div>
+            <label>Дріб @(i + 1):</label>
+            <input name="fractions[@i].Numerator" placeholder="Чисельник" />
+            <input name="fractions[@i].Denominator" placeholder="Знаменник" />
+        </div>
+    }
+    <button type="submit">Обчислити</button>
+</form>
+
+@if (ViewBag.Fractions != null)
+{
+    <h3>Введені дроби:</h3>
+    <ul>
+        @foreach (var f in ViewBag.Fractions)
+        {
+            <li>@f</li>
+        }
+    </ul>
+    <p><strong>Сума:</strong> @ViewBag.Sum</p>
+    <p><strong>Добуток:</strong> @ViewBag.Product</p>
+    <p><strong>Мінімум:</strong> @ViewBag.Min</p>
+    <p><strong>Максимум:</strong> @ViewBag.Max</p>
+}

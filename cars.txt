@@ -1,0 +1,7 @@
+Toyota Camry;White;Toyota;2015;2.5
+
+Honda Civic;Black;Honda;2017;2.0
+
+
+Ford Mustang;Red;Ford;2020;5.0
+Chevrolet Camaro;Blue;Chevrolet;2019;6.2

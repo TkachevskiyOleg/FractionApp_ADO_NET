@@ -1,48 +1,42 @@
 ﻿@{
-    ViewBag.Title = "Fraction Calculator";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Fraction Calculator";
 }
 
 <h2>Fraction Calculator</h2>
 
-<form asp-action="Calculate" method="post">
+<form asp-controller="Fraction" asp-action="Calculate" method="post">
     <fieldset>
-        <legend>Fraction 1</legend>
-        Numerator:
-        <input type="number" name="f1.Numerator" required />
-        <br />
-        Denominator:
-        <input type="number" name="f1.Denominator" required />
+        <legend>First Fraction</legend>
+        <input name="Numerator" placeholder="Numerator" required />
+        <input name="Denominator" placeholder="Denominator" required />
+    </fieldset>
+    <fieldset>
+        <legend>Second Fraction</legend>
+        <input name="f2.Numerator" placeholder="Numerator" required />
+        <input name="f2.Denominator" placeholder="Denominator" required />
     </fieldset>
 
-    <fieldset>
-        <legend>Fraction 2</legend>
-        Numerator:
-        <input type="number" name="f2.Numerator" required />
-        <br />
-        Denominator:
-        <input type="number" name="f2.Denominator" required />
-    </fieldset>
-
-    <p>
-        Operation:
-        <select name="operation">
-            <option value="Add">+</option>
-            <option value="Subtract">−</option>
-            <option value="Multiply">×</option>
-            <option value="Divide">÷</option>
-        </select>
-    </p>
+    <label>Choose Operation:</label>
+    <select name="operation">
+        <option value="Add">+</option>
+        <option value="Subtract">−</option>
+        <option value="Multiply">×</option>
+        <option value="Divide">÷</option>
+    </select>
 
     <button type="submit">Calculate</button>
 </form>
 
-@if (ViewBag.Result != null)
+@if (ViewBag.Error != null)
 {
-    <hr />
-    <h3>Result</h3>
-    <p>
-        @ViewBag.F1.ToString() @ViewBag.Operation @ViewBag.F2.ToString() = <strong>@ViewBag.Result.ToString()</strong><br />
-        Decimal: <strong>@ViewBag.Decimal</strong>
-    </p>
+    <p style="color:red">@ViewBag.Error</p>
 }
+else if (ViewBag.Result != null)
+{
+    <h3>Result: @ViewBag.Result.ToString()</h3>
+    <p>Decimal: @ViewBag.Decimal</p>
+}
+
+<p>
+    <a asp-controller="Fraction" asp-action="Upload">Завантажити дроби з файлу</a>
+</p>
