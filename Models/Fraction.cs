@@ -53,8 +53,8 @@ namespace _24._04._2024_Lab.Models
 
             if (Denominator < 0)
             {
-                Denominator *= -1;
                 Numerator *= -1;
+                Denominator *= -1;
             }
         }
 
@@ -69,6 +69,14 @@ namespace _24._04._2024_Lab.Models
             return a;
         }
 
-        public double ToDecimal() => (double)Numerator / Denominator;
+        public string ToDecimal()
+        {
+            return ((double)Numerator / Denominator).ToString("F4");
+        }
+
+        public override string ToString()
+        {
+            return $"{Numerator}/{Denominator}";
+        }
     }
 }

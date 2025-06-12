@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Fraction Calculator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Fraction Calculator</h2>
+
+<form asp-action="Calculate" method="post">
+    <fieldset>
+        <legend>Fraction 1</legend>
+        Numerator:
+        <input type="number" name="f1.Numerator" required />
+        <br />
+        Denominator:
+        <input type="number" name="f1.Denominator" required />
+    </fieldset>
+
+    <fieldset>
+        <legend>Fraction 2</legend>
+        Numerator:
+        <input type="number" name="f2.Numerator" required />
+        <br />
+        Denominator:
+        <input type="number" name="f2.Denominator" required />
+    </fieldset>
+
+    <p>
+        Operation:
+        <select name="operation">
+            <option value="Add">+</option>
+            <option value="Subtract">−</option>
+            <option value="Multiply">×</option>
+            <option value="Divide">÷</option>
+        </select>
+    </p>
+
+    <button type="submit">Calculate</button>
+</form>
+
+@if (ViewBag.Result != null)
+{
+    <hr />
+    <h3>Result</h3>
+    <p>
+        @ViewBag.F1.ToString() @ViewBag.Operation @ViewBag.F2.ToString() = <strong>@ViewBag.Result.ToString()</strong><br />
+        Decimal: <strong>@ViewBag.Decimal</strong>
+    </p>
+}

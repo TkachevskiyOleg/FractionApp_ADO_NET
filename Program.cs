@@ -1,4 +1,4 @@
-namespace _24._04._2024_Lab
+﻿namespace _24._04._2024_Lab
 {
     public class Program
     {
@@ -6,16 +6,13 @@ namespace _24._04._2024_Lab
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -23,12 +20,11 @@ namespace _24._04._2024_Lab
             app.UseStaticFiles();
 
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Fraction}/{action=Index}/{id?}");
 
             app.Run();
         }
